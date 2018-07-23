@@ -151,9 +151,9 @@ function validateData(ev) {
     }
 
     let more_info = ev.t_info;
-     .onkeypress=function(){
-       .style.borderColor="#666";
-        let errName=.nextElementSibling;
+     more_info.onkeypress=function(){
+       more_info.style.borderColor="#666";
+        let errName=more_info.nextElementSibling;
         errName.classList.remove("error-message");
         errName.classList.add("hide");
     }
@@ -166,9 +166,9 @@ function validateData(ev) {
     }
 
     let how_improve = ev.h_info;
-     .onkeypress=function(){
-       .style.borderColor="#666";
-        let errName=.nextElementSibling;
+     how_improve.onkeypress=function(){
+       how_improve.style.borderColor="#666";
+        let errName=how_improve.nextElementSibling;
         errName.classList.remove("error-message");
         errName.classList.add("hide");
     }
@@ -268,12 +268,12 @@ function validateData(ev) {
     let tech_s_choices_two= tech_s_choices_one.replace(clean_tech_close,"");
     //validate sdg_goal
     let sdg_goal=ev.sdg_goal;
-     .onkeypress=function(){
-       .style.borderColor="#666";
-        let errName=.nextElementSibling;
+    sdg_goal.addEventListener("click", function(){
+        sdg_goal.style.borderColor="#666";
+        let errName=sdg_goal.nextElementSibling;
         errName.classList.remove("error-message");
-        errName.classList.add("hide");
-    }
+        errName.classList.add("hide");})
+     
     if(sdg_goal.value=="select"){
         let errName=sdg_goal.nextElementSibling;
         errName.classList.remove("hide");
@@ -282,9 +282,9 @@ function validateData(ev) {
     }
     //validate social mission
     let social_mission=ev.social_mission;
-     .onkeypress=function(){
-       .style.borderColor="#666";
-        let errName=.nextElementSibling;
+     social_mission.onkeypress=function(){
+       social_mission.style.borderColor="#666";
+        let errName=social_mission.nextElementSibling;
         errName.classList.remove("error-message");
         errName.classList.add("hide");
     }
@@ -296,9 +296,9 @@ function validateData(ev) {
     }
     //validate clients
     let sdg_clients=ev.sdg_clients;
-     .onkeypress=function(){
-       .style.borderColor="#666";
-        let errName=.nextElementSibling;
+     sdg_clients.onkeypress=function(){
+       sdg_clients.style.borderColor="#666";
+        let errName=sdg_clients.nextElementSibling;
         errName.classList.remove("error-message");
         errName.classList.add("hide");
     }
@@ -310,9 +310,9 @@ function validateData(ev) {
     }
     //validate dig tech required
     let dig_tech_required=ev.dig_tech_required;
-     .onkeypress=function(){
-       .style.borderColor="#666";
-        let errName=.nextElementSibling;
+     dig_tech_required.onkeypress=function(){
+       dig_tech_required.style.borderColor="#666";
+        let errName=dig_tech_required.nextElementSibling;
         errName.classList.remove("error-message");
         errName.classList.add("hide");
     }
@@ -324,9 +324,9 @@ function validateData(ev) {
     }
     //validate required
     let impact=ev.impact;
-     .onkeypress=function(){
-       .style.borderColor="#666";
-        let errName=.nextElementSibling;
+     impact.onkeypress=function(){
+       impact.style.borderColor="#666";
+        let errName=impact.nextElementSibling;
         errName.classList.remove("error-message");
         errName.classList.add("hide");
     }
@@ -338,9 +338,9 @@ function validateData(ev) {
     }
     //validate other projects
     let o_projects=ev.o_projects;
-     .onkeypress=function(){
-       .style.borderColor="#666";
-        let errName=.nextElementSibling;
+     o_projects.onkeypress=function(){
+       o_projects.style.borderColor="#666";
+        let errName=o_projects.nextElementSibling;
         errName.classList.remove("error-message");
         errName.classList.add("hide");
     }
@@ -352,9 +352,9 @@ function validateData(ev) {
     }
     //validate how did you hear
     let how_did_hear = ev.hd_hear;
-     .onkeypress=function(){
-       .style.borderColor="#666";
-        let errName=.nextElementSibling;
+     how_did_hear.onkeypress=function(){
+       how_did_hear.style.borderColor="#666";
+        let errName=how_did_hear.nextElementSibling;
         errName.classList.remove("error-message");
         errName.classList.add("hide");
     }
