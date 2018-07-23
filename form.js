@@ -238,26 +238,27 @@ function validateData(ev) {
         errName.classList.remove("hide");
         errName.classList.add("error-message");
     }
+    //validate dig tech required
     let dig_tech_required=ev.dig_tech_required;
     if(dig_tech_required.value==""){
         let errName=dig_tech_required.nextElementSibling;
         errName.classList.remove("hide");
         errName.classList.add("error-message");
     }
+    //validate required
     let impact=ev.impact;
     if(impact.value==""){
         let errName=impact.nextElementSibling;
         errName.classList.remove("hide");
         errName.classList.add("error-message");
     }
+    //validate other projects
     let o_projects=ev.o_projects;
     if(o_projects.value==""){
         let errName=o_projects.nextElementSibling;
         errName.classList.remove("hide");
         errName.classList.add("error-message");
     }
-    //validate digital tech
-    console.log(sdg_clients);
     //validate how did you hear
     let how_did_hear = ev.hd_hear;
     if (how_did_hear.value.length == 0) {
