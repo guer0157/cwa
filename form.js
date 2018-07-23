@@ -23,26 +23,46 @@ function getInfo(ev) {
     let radio_btns_size = document.querySelector("input[name='o_size']:checked");
 
     let checkbox_tech = document.querySelectorAll("input[name='c_tech']:checked");
-
-    let hd_hear = document.getElementById("hd_hear");
+    //Your Social Mission
+    let sdg_goal=document.getElementById("sdg_goal");
+    
+    let sdg_social_mission=document.getElementById("s_mission");
+    
+    let sdg_clients=document.getElementById("cservice_mission");
+    //Proposed Project
+    let prjt_dig_tech_required=document.getElementById("dig_tech");
+    
+    let prjt_imp_a=document.getElementById("imp_a");
+    
+    let prjt_otech_con=document.getElementById("otech_con");
+    
+    let prjt_hd_hear=document.getElementById("hd_hear");
+    
+    
 
     //compile data into object for validation
     let obj = {
-        "name": f_name.value,
-        "position": position.value,
-        "organization": o_name.value,
-        "email": email.value,
-        "phone": phone.value,
-        "t_info": t_info.value,
-        "h_info": h_info.value,
+        "name": f_name,
+        "position": position,
+        "organization": o_name,
+        "email": email,
+        "phone": phone,
+        "t_info": t_info,
+        "h_info": h_info,
         "o_type": radio_btns_org,
         "o_size": radio_btns_size,
         "o_tech": checkbox_tech,
-        "hd_hear": hd_hear.value
+        "sdg_goal": sdg_goal,
+        "social_mission": sdg_social_mission,
+        "sdg_clients":sdg_clients,
+        "dig_tech_required":prjt_dig_tech_required,
+        "impact":prjt_imp_a,
+        "o_projects":prjt_otech_con,
+        "hd_hear":prjt_hd_hear
     }
-    console.log(obj);
-
-//    validateData(obj);
+    
+//    console.log(obj);
+    validateData(obj);
 }
 
 //Data validation function
@@ -50,16 +70,21 @@ function validateData(ev) {
 
     let name = ev.name;
     if (name.value == "") {
-        name.setCustomValidity(`Please provide a Name`);
-        name.reportValidity();
+        name.style.borderColor="red";
+        let errName=name.nextElementSibling;
+        errName.classList.remove("hide");
+        errName.classList.add("error-message");
+        
     }
     let position = ev.position;
 
     let org_name = ev.organization;
 
     if (org_name.value == "") {
-        org_name.setCustomValidity(`Plese provide the name of your organization`);
-        org_name.reportValidity();
+        org_name.style.borderColor="red";
+        let errName=org_name.nextElementSibling;
+        errName.classList.remove("hide");
+        errName.classList.add("error-message");
     }
 
     //val email   
@@ -68,8 +93,10 @@ function validateData(ev) {
     let emailPass = emailPattern.test(checkEmail.value);
     if (emailPass == false) {
         if (checkEmail.value.length == 0) {
-            checkEmail.setCustomValidity(`Please provide an E-mail`);
-            checkEmail.reportValidity();
+            checkEmail.style.borderColor="red";
+            let errName=checkEmail.nextElementSibling;
+            errName.classList.remove("hide");
+            errName.classList.add("error-message");
             return false;
         } else {
             checkEmail.setCustomValidity(`Invalid E-mail use format user@youremail.com`);
