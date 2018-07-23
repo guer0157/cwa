@@ -224,12 +224,14 @@ function validateData(ev) {
         errName.classList.remove("hide");
         errName.classList.add("error-message");
     }
+    //validate social mission
     let social_mission=ev.social_mission;
     if(social_mission.value==""){
         let errName=social_mission.nextElementSibling;
         errName.classList.remove("hide");
         errName.classList.add("error-message");
     }
+    //validate clients
     let sdg_clients=ev.sdg_clients;
     if(sdg_clients.value==""){
         let errName=sdg_clients.nextElementSibling;
