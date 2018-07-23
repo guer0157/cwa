@@ -67,7 +67,7 @@ function getInfo(ev) {
 
 //Data validation function
 function validateData(ev) {
-
+    let val_count=0;
     let name = ev.name;
     name.onkeypress=function(){
         name.style.borderColor="#666";
@@ -75,7 +75,7 @@ function validateData(ev) {
         errName.classList.remove("error-message");
         errName.classList.add("hide");
     }
-    let val_count=0;
+    
     if (name.value == "") {
         name.style.borderColor="red";
         let errName=name.nextElementSibling;
@@ -86,7 +86,13 @@ function validateData(ev) {
     let position = ev.position;
 
     let org_name = ev.organization;
-
+        org_name.onkeypress=function(){
+        org_name.style.borderColor="#666";
+        let errName=org_name.nextElementSibling;
+        errName.classList.remove("error-message");
+        errName.classList.add("hide");
+    }
+       
     if (org_name.value == "") {
         org_name.style.borderColor="red";
         let errName=org_name.nextElementSibling;
@@ -97,6 +103,13 @@ function validateData(ev) {
 
     //val email   
     let checkEmail = ev.email;
+       
+       checkEmail.onkeypress=function(){
+       checkEmail.style.borderColor="#666";
+        let errName=checkEmail.nextElementSibling;
+        errName.classList.remove("error-message");
+        errName.classList.add("hide");
+    }
     let emailPattern = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
     let emailPass = emailPattern.test(checkEmail.value);
     if (emailPass == false) {
@@ -119,6 +132,12 @@ function validateData(ev) {
 
     //validate phone
     let checkPhone = ev.phone;
+     checkPhone.onkeypress=function(){
+       checkPhone.style.borderColor="#666";
+        let errName=checkPhone.nextElementSibling;
+        errName.classList.remove("error-message");
+        errName.classList.add("hide");
+    }
     if (!checkPhone.value == "") {
         let phonePattern_dashes = new RegExp(/^([0-9][0-9][0-9])-?([0-9][0-9][0-9])-?([0-9][0-9][0-9][0-9])$/);
         let phonePass_dash = phonePattern_dashes.test(checkPhone.value);
@@ -132,6 +151,12 @@ function validateData(ev) {
     }
 
     let more_info = ev.t_info;
+     .onkeypress=function(){
+       .style.borderColor="#666";
+        let errName=.nextElementSibling;
+        errName.classList.remove("error-message");
+        errName.classList.add("hide");
+    }
     if (more_info.value == "") {
         more_info.style.borderColor="red";
         let errName=more_info.nextElementSibling;
@@ -141,6 +166,12 @@ function validateData(ev) {
     }
 
     let how_improve = ev.h_info;
+     .onkeypress=function(){
+       .style.borderColor="#666";
+        let errName=.nextElementSibling;
+        errName.classList.remove("error-message");
+        errName.classList.add("hide");
+    }
     if (how_improve.value.length == 0) {
         how_improve.style.borderColor="red";
         let errName=how_improve.nextElementSibling;
@@ -150,7 +181,6 @@ function validateData(ev) {
     }
 
     let org_type = ev.o_type;
-
     if (org_type == null) {
         let change_text = document.getElementById('o-type-error');
         change_text.classList.remove("hide");
@@ -182,6 +212,7 @@ function validateData(ev) {
     }
 
     let org_size = ev.o_size;
+ 
         if(org_size==null){
             let errName=document.getElementById("o-size-error");
             errName.classList.remove("hide");
@@ -237,6 +268,12 @@ function validateData(ev) {
     let tech_s_choices_two= tech_s_choices_one.replace(clean_tech_close,"");
     //validate sdg_goal
     let sdg_goal=ev.sdg_goal;
+     .onkeypress=function(){
+       .style.borderColor="#666";
+        let errName=.nextElementSibling;
+        errName.classList.remove("error-message");
+        errName.classList.add("hide");
+    }
     if(sdg_goal.value=="select"){
         let errName=sdg_goal.nextElementSibling;
         errName.classList.remove("hide");
@@ -245,6 +282,12 @@ function validateData(ev) {
     }
     //validate social mission
     let social_mission=ev.social_mission;
+     .onkeypress=function(){
+       .style.borderColor="#666";
+        let errName=.nextElementSibling;
+        errName.classList.remove("error-message");
+        errName.classList.add("hide");
+    }
     if(social_mission.value==""){
         let errName=social_mission.nextElementSibling;
         errName.classList.remove("hide");
@@ -253,6 +296,12 @@ function validateData(ev) {
     }
     //validate clients
     let sdg_clients=ev.sdg_clients;
+     .onkeypress=function(){
+       .style.borderColor="#666";
+        let errName=.nextElementSibling;
+        errName.classList.remove("error-message");
+        errName.classList.add("hide");
+    }
     if(sdg_clients.value==""){
         let errName=sdg_clients.nextElementSibling;
         errName.classList.remove("hide");
@@ -261,6 +310,12 @@ function validateData(ev) {
     }
     //validate dig tech required
     let dig_tech_required=ev.dig_tech_required;
+     .onkeypress=function(){
+       .style.borderColor="#666";
+        let errName=.nextElementSibling;
+        errName.classList.remove("error-message");
+        errName.classList.add("hide");
+    }
     if(dig_tech_required.value==""){
         let errName=dig_tech_required.nextElementSibling;
         errName.classList.remove("hide");
@@ -269,6 +324,12 @@ function validateData(ev) {
     }
     //validate required
     let impact=ev.impact;
+     .onkeypress=function(){
+       .style.borderColor="#666";
+        let errName=.nextElementSibling;
+        errName.classList.remove("error-message");
+        errName.classList.add("hide");
+    }
     if(impact.value==""){
         let errName=impact.nextElementSibling;
         errName.classList.remove("hide");
@@ -277,6 +338,12 @@ function validateData(ev) {
     }
     //validate other projects
     let o_projects=ev.o_projects;
+     .onkeypress=function(){
+       .style.borderColor="#666";
+        let errName=.nextElementSibling;
+        errName.classList.remove("error-message");
+        errName.classList.add("hide");
+    }
     if(o_projects.value==""){
         let errName=o_projects.nextElementSibling;
         errName.classList.remove("hide");
@@ -285,6 +352,12 @@ function validateData(ev) {
     }
     //validate how did you hear
     let how_did_hear = ev.hd_hear;
+     .onkeypress=function(){
+       .style.borderColor="#666";
+        let errName=.nextElementSibling;
+        errName.classList.remove("error-message");
+        errName.classList.add("hide");
+    }
     if (how_did_hear.value.length == 0) {
         let errName=how_did_hear.nextElementSibling;
         errName.classList.remove("hide");
