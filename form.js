@@ -35,9 +35,9 @@ function getInfo(ev) {
         "phone": phone.value,
         "t_info": t_info.value,
         "h_info": h_info.value,
-        "o_type": radio_btns_org.value,
-        "o_size": radio_btns_size.value,
-        "o_tech": checkbox_tech.value,
+        "o_type": radio_btns_org,
+        "o_size": radio_btns_size,
+        "o_tech": checkbox_tech,
         "hd_hear": hd_hear.value
     }
     console.log(obj);
