@@ -183,7 +183,6 @@ function validateData(ev) {
     let tech_support = ev.o_tech;
     let tech_choices = [];
     if (tech_support.length == 0) {
-        console.log(tech_support.length);
         let errName=document.getElementById("c_tech_error");
         errName.classList.remove("hide");
         errName.classList.add("error-message");
@@ -232,12 +231,31 @@ function validateData(ev) {
         errName.classList.add("error-message");
     }
     let sdg_clients=ev.sdg_clients;
-    if(sdg_clients==""){
+    if(sdg_clients.value==""){
         let errName=sdg_clients.nextElementSibling;
         errName.classList.remove("hide");
         errName.classList.add("error-message");
     }
-    console.log(social_mission);
+    let dig_tech_required=ev.dig_tech_required;
+    if(dig_tech_required.value==""){
+        let errName=dig_tech_required.nextElementSibling;
+        errName.classList.remove("hide");
+        errName.classList.add("error-message");
+    }
+    let impact=ev.impact;
+    if(impact.value==""){
+        let errName=impact.nextElementSibling;
+        errName.classList.remove("hide");
+        errName.classList.add("error-message");
+    }
+    let o_projects=ev.o_projects;
+    if(o_projects.value==""){
+        let errName=o_projects.nextElementSibling;
+        errName.classList.remove("hide");
+        errName.classList.add("error-message");
+    }
+    //validate digital tech
+    console.log(sdg_clients);
     //validate how did you hear
     let how_did_hear = ev.hd_hear;
     if (how_did_hear.value.length == 0) {
