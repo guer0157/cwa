@@ -69,12 +69,13 @@ function getInfo(ev) {
 function validateData(ev) {
 
     let name = ev.name;
+    let val_count=0;
     if (name.value == "") {
         name.style.borderColor="red";
         let errName=name.nextElementSibling;
         errName.classList.remove("hide");
         errName.classList.add("error-message");
-        
+        val_count=val_count+1;
     }
     let position = ev.position;
 
@@ -85,6 +86,7 @@ function validateData(ev) {
         let errName=org_name.nextElementSibling;
         errName.classList.remove("hide");
         errName.classList.add("error-message");
+        val_count=val_count+1;
     }
 
     //val email   
@@ -98,12 +100,14 @@ function validateData(ev) {
             errName.classList.remove("hide");
             errName.classList.add("error-message");
             errName.innerHTML="Please provide your E-mail"
+            val_count=val_count+1;
         } else {
             checkEmail.style.borderColor="red";
             let errName=checkEmail.nextElementSibling;
             errName.classList.remove("hide");
             errName.classList.add("error-message");
             errName.innerHTML="Invalid E-mail use format user@youremail.com";
+            val_count=val_count+1;
         }
     }
 
@@ -117,6 +121,7 @@ function validateData(ev) {
             let errName=checkPhone.nextElementSibling;
             errName.classList.remove("hide");
             errName.classList.add("error-message");
+            val_count=val_count+1;
         }
     }
 
@@ -126,6 +131,7 @@ function validateData(ev) {
         let errName=more_info.nextElementSibling;
         errName.classList.remove("hide");
         errName.classList.add("error-message");
+        val_count=val_count+1;
     }
 
     let how_improve = ev.h_info;
@@ -134,6 +140,7 @@ function validateData(ev) {
         let errName=how_improve.nextElementSibling;
         errName.classList.remove("hide");
         errName.classList.add("error-message");
+        val_count=val_count+1;
     }
 
     let org_type = ev.o_type;
@@ -155,6 +162,7 @@ function validateData(ev) {
             change_text.classList.add("hide");
                 })
         })
+        val_count=val_count+1;
     }else if(org_type.value=="other"){
         let radio_btns_input = document.getElementById("o_org_type");
         if (radio_btns_input.value.length == 0) {
@@ -164,6 +172,7 @@ function validateData(ev) {
             radio_btns_input.style.borderColor="red";
             change_text.innerHTML="Please specify your answer";
         }
+        val_count=val_count+1;
     }
 
     let org_size = ev.o_size;
@@ -178,6 +187,7 @@ function validateData(ev) {
             errName.classList.add("hide");
                 })
             })
+            val_count=val_count+1;
         }
 
     let tech_support = ev.o_tech;
@@ -193,6 +203,7 @@ function validateData(ev) {
         errName.classList.add("hide");
             })
         })
+        val_count=val_count+1;
     }
     let checkbox_other=document.getElementById("other_sup");
     let other_text_field;
@@ -211,6 +222,7 @@ function validateData(ev) {
             errName.classList.add("error-message");
             other_text_field.style.borderColor="red";
         }
+        val_count=val_count+1;
     }
     let tech_s_choices_s = JSON.stringify(tech_choices);
     let clean_tech_open= new RegExp(/\[/);
@@ -223,6 +235,7 @@ function validateData(ev) {
         let errName=sdg_goal.nextElementSibling;
         errName.classList.remove("hide");
         errName.classList.add("error-message");
+        val_count=val_count+1;
     }
     //validate social mission
     let social_mission=ev.social_mission;
@@ -230,6 +243,7 @@ function validateData(ev) {
         let errName=social_mission.nextElementSibling;
         errName.classList.remove("hide");
         errName.classList.add("error-message");
+        val_count=val_count+1;
     }
     //validate clients
     let sdg_clients=ev.sdg_clients;
@@ -237,6 +251,7 @@ function validateData(ev) {
         let errName=sdg_clients.nextElementSibling;
         errName.classList.remove("hide");
         errName.classList.add("error-message");
+        val_count=val_count+1;
     }
     //validate dig tech required
     let dig_tech_required=ev.dig_tech_required;
@@ -244,6 +259,7 @@ function validateData(ev) {
         let errName=dig_tech_required.nextElementSibling;
         errName.classList.remove("hide");
         errName.classList.add("error-message");
+        val_count=val_count+1;
     }
     //validate required
     let impact=ev.impact;
@@ -251,6 +267,7 @@ function validateData(ev) {
         let errName=impact.nextElementSibling;
         errName.classList.remove("hide");
         errName.classList.add("error-message");
+        val_count=val_count+1;
     }
     //validate other projects
     let o_projects=ev.o_projects;
@@ -258,15 +275,20 @@ function validateData(ev) {
         let errName=o_projects.nextElementSibling;
         errName.classList.remove("hide");
         errName.classList.add("error-message");
+        val_count=val_count+1;
     }
     //validate how did you hear
     let how_did_hear = ev.hd_hear;
     if (how_did_hear.value.length == 0) {
-        how_did_hear.setCustomValidity(`Please provide an answer`);
-        how_did_hear.reportValidity();
+        let errName=how_did_hear.nextElementSibling;
+        errName.classList.remove("hide");
+        errName.classList.add("error-message");
+        val_count=val_count+1;
     }
-    
-    
+    console.log(val_count);
+    if(val_count>0){
+        return false;
+    }
 
     let data = {
         "name": name.value,
@@ -276,12 +298,18 @@ function validateData(ev) {
         "phone": checkPhone.value,
         "t_info": more_info.value,
         "h_info": how_improve.value,
-        "o_type": org_type_val,
+        "o_type": org_type,
         "o_size": org_size.value,
         "o_tech": tech_s_choices_two,
+        "sdg_goal": sdg_goal,
+        "social_mission": social_mission,
+        "sdg_clients":sdg_clients,
+        "dig_tech_required":dig_tech_required,
+        "impact":impact,
+        "o_projects":o_projects,
         "hd_hear": how_did_hear.value
     };
-
+    console.log(data);
 //    submition(data);
 };
 
