@@ -69,6 +69,12 @@ function getInfo(ev) {
 function validateData(ev) {
 
     let name = ev.name;
+    name.onkeypress=function(){
+        name.style.borderColor="#666";
+        let errName=name.nextElementSibling;
+        errName.classList.remove("error-message");
+        errName.classList.add("hide");
+    }
     let val_count=0;
     if (name.value == "") {
         name.style.borderColor="red";
@@ -298,15 +304,15 @@ function validateData(ev) {
         "phone": checkPhone.value,
         "t_info": more_info.value,
         "h_info": how_improve.value,
-        "o_type": org_type,
+        "o_type": org_type.value,
         "o_size": org_size.value,
         "o_tech": tech_s_choices_two,
-        "sdg_goal": sdg_goal,
-        "social_mission": social_mission,
-        "sdg_clients":sdg_clients,
-        "dig_tech_required":dig_tech_required,
-        "impact":impact,
-        "o_projects":o_projects,
+        "sdg_goal": sdg_goal.value,
+        "social_mission": social_mission.value,
+        "sdg_clients":sdg_clients.value,
+        "dig_tech_required":dig_tech_required.value,
+        "impact":impact.value,
+        "o_projects":o_projects.value,
         "hd_hear": how_did_hear.value
     };
     console.log(data);
