@@ -218,9 +218,26 @@ function validateData(ev) {
     let clean_tech_close= new RegExp(/\]/);
     let tech_s_choices_one= tech_s_choices_s.replace(clean_tech_open,"");
     let tech_s_choices_two= tech_s_choices_one.replace(clean_tech_close,"");
-    console.log(tech_s_choices_two);
-    
-    
+    //validate sdg_goal
+    let sdg_goal=ev.sdg_goal;
+    if(sdg_goal.value=="select"){
+        let errName=sdg_goal.nextElementSibling;
+        errName.classList.remove("hide");
+        errName.classList.add("error-message");
+    }
+    let social_mission=ev.social_mission;
+    if(social_mission.value==""){
+        let errName=social_mission.nextElementSibling;
+        errName.classList.remove("hide");
+        errName.classList.add("error-message");
+    }
+    let sdg_clients=ev.sdg_clients;
+    if(sdg_clients==""){
+        let errName=sdg_clients.nextElementSibling;
+        errName.classList.remove("hide");
+        errName.classList.add("error-message");
+    }
+    console.log(social_mission);
     //validate how did you hear
     let how_did_hear = ev.hd_hear;
     if (how_did_hear.value.length == 0) {
