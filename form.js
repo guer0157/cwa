@@ -97,10 +97,13 @@ function validateData(ev) {
             let errName=checkEmail.nextElementSibling;
             errName.classList.remove("hide");
             errName.classList.add("error-message");
-            return false;
+            errName.innerHTML="Please provide your E-mail"
         } else {
-            checkEmail.setCustomValidity(`Invalid E-mail use format user@youremail.com`);
-            checkEmail.reportValidity();
+            checkEmail.style.borderColor="red";
+            let errName=checkEmail.nextElementSibling;
+            errName.classList.remove("hide");
+            errName.classList.add("error-message");
+            errName.innerHTML="Invalid E-mail use format user@youremail.com";
         }
     }
 
@@ -110,103 +113,104 @@ function validateData(ev) {
         let phonePattern_dashes = new RegExp(/^([0-9][0-9][0-9])-?([0-9][0-9][0-9])-?([0-9][0-9][0-9][0-9])$/);
         let phonePass_dash = phonePattern_dashes.test(checkPhone.value);
         if (!phonePass_dash) {
-            checkPhone.setCustomValidity(`Please provide area code. Only characters ( 0-9 and - ) allowed. `);
-            checkPhone.reportValidity();
-            return false;
+            checkPhone.style.borderColor="red";
+            let errName=checkPhone.nextElementSibling;
+            errName.classList.remove("hide");
+            errName.classList.add("error-message");
         }
     }
 
     let more_info = ev.t_info;
     if (more_info.value == "") {
-        more_info.setCustomValidity(`Please tell us about your organization`);
-        more_info.reportValidity();
+        more_info.style.borderColor="red";
+        let errName=more_info.nextElementSibling;
+        errName.classList.remove("hide");
+        errName.classList.add("error-message");
     }
 
     let how_improve = ev.h_info;
     if (how_improve.value.length == 0) {
-        how_improve.setCustomValidity(`Please provide an answer`);
-        how_improve.reportValidity();
+        how_improve.style.borderColor="red";
+        let errName=how_improve.nextElementSibling;
+        errName.classList.remove("hide");
+        errName.classList.add("error-message");
     }
 
     let org_type = ev.o_type;
 
     if (org_type == null) {
-        let change_text = document.getElementById('type_legend');
-        change_text.innerHTML = "Your organization is:<span id='alertmsg' class='italic'> *Please select atleast one of the options below.</span>";
+        let change_text = document.getElementById('o-type-error');
+        change_text.classList.remove("hide");
+        change_text.classList.add("error-message");
+//          let change_border=document.querySelectorAll("input[name='o_type']");
+//            change_border.forEach(btn=>{
+//                console.log(btn);
+//                btn.classList.add("is-validated");
+//                console.log(btn);
+//            })
         let check_event = document.querySelectorAll("input[name='o_type']");
         check_event.forEach(checkbox => {
-            checkbox.addEventListener('click', function clearText() {
-                let original_text = document.getElementById('type_legend');
-                original_text.innerHTML = "Your organization is:<span class='italic'> Thank you!</span>"
-                setTimeout(clear => {
-                    original_text.textContent = "Your organization is:";
-                }, 1000)
-            })
+            checkbox.addEventListener('click', function clearText(){
+            change_text.classList.remove("error-message");
+            change_text.classList.add("hide");
+                })
         })
-        return false;
-    }
-    let org_type_val = org_type.value;
-    if (org_type.value == "other") {
+    }else if(org_type.value=="other"){
         let radio_btns_input = document.getElementById("o_org_type");
-        org_type_val = radio_btns_input.value;
         if (radio_btns_input.value.length == 0) {
-            radio_btns_input.setCustomValidity(`Please explain your answer`);
-            radio_btns_input.reportValidity();
-            return false;
+            let change_text = document.getElementById('o-type-error');
+            change_text.classList.remove("hide");
+            change_text.classList.add("error-message");
+            radio_btns_input.style.borderColor="red";
+            change_text.innerHTML="Please specify your answer";
         }
     }
 
     let org_size = ev.o_size;
-   
         if(org_size==null){
-            let change_size_legend=document.getElementById("org_size");
-            change_size_legend.innerHTML="Your organization size: <i class='italic'>*Please specify your organizations size</i>"
-        let size_btns=document.querySelectorAll("input[name='o_size']");
-        size_btns.forEach(input=>{
-            input.addEventListener('click', function(){
-                let original_text = document.getElementById('org_size');
-                original_text.innerHTML = "Your organization size: <i class='italic'>Thank you!</i>"
-                setTimeout(clear => {
-                    original_text.innerHTML = "Your organization size <i class='italic'>(employees and volunteers)</i>";
-                }, 1000)
+            let errName=document.getElementById("o-size-error");
+            errName.classList.remove("hide");
+            errName.classList.add("error-message");
+            let radio=document.querySelectorAll("input[name='o_size']");    
+            radio.forEach(btns => {
+            btns.addEventListener('click', function clearText(){
+            errName.classList.remove("error-message");
+            errName.classList.add("hide");
+                })
             })
-        })
-            return false;
         }
 
     let tech_support = ev.o_tech;
     let tech_choices = [];
     if (tech_support.length == 0) {
-        tech_support_val = false;
-        let change_text = document.getElementById('c_tech_legend');
-        change_text.innerHTML = "Current technical support available:<span class='italic'> *Please select atleast one of the options below.</span>";
+        console.log(tech_support.length);
+        let errName=document.getElementById("c_tech_error");
+        errName.classList.remove("hide");
+        errName.classList.add("error-message");
         let check_event = document.querySelectorAll("input[name='c_tech']");
         check_event.forEach(checkbox => {
-            checkbox.addEventListener('click', function clearText() {
-                let original_text = document.getElementById('c_tech_legend');
-                original_text.innerHTML = "Current technical support available:<span class='italic'> Thank you!</span>"
-                setTimeout(clear => {
-                    original_text.textContent = "Current technical support available:";
-                }, 1000)
+        checkbox.addEventListener('click', function clearText() {
+        errName.classList.remove("error-message");
+        errName.classList.add("hide");
             })
         })
-        return false;
     }
-    let checkbox_other = document.getElementById('other_sup');
-  
+    let checkbox_other=document.getElementById("other_sup");
     let other_text_field;
-
     for (let i = 0; i < tech_support.length; i++) {
         let create_arr_tech = tech_support[i].value;
         tech_choices.push(create_arr_tech);
     }
+    
     if (checkbox_other.checked) {
         other_text_field = document.getElementById("o_org_type_tech");
         other_text_field.required = true;
         tech_choices.push(other_text_field.value);
         if (!other_text_field.checkValidity()) {
-            other_text_field.reportValidity();
-            return false;
+        let errName=document.getElementById("c_tech_error");
+            errName.classList.remove("hide");
+            errName.classList.add("error-message");
+            other_text_field.style.borderColor="red";
         }
     }
     let tech_s_choices_s = JSON.stringify(tech_choices);
@@ -214,7 +218,8 @@ function validateData(ev) {
     let clean_tech_close= new RegExp(/\]/);
     let tech_s_choices_one= tech_s_choices_s.replace(clean_tech_open,"");
     let tech_s_choices_two= tech_s_choices_one.replace(clean_tech_close,"");
-  
+    console.log(tech_s_choices_two);
+    
     
     //validate how did you hear
     let how_did_hear = ev.hd_hear;
